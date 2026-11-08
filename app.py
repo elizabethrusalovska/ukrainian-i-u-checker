@@ -2,6 +2,7 @@
 """Графічний інтерфейс перевірки початкових І / И."""
 
 import html
+import os
 import gradio as gr
 
 from spelling_checker import MAX_TEXT_LENGTH, analyze_text
@@ -279,7 +280,9 @@ with gr.Blocks(
 
 if __name__ == "__main__":
     demo.launch(
-        inbrowser=True,
+        server_name="0.0.0.0",
+        server_port=int(os.environ.get("PORT", "7860")),
+        inbrowser=False,
         theme=gr.themes.Soft(
             primary_hue="green",
             secondary_hue="amber"
